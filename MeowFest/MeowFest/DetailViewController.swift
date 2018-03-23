@@ -14,7 +14,7 @@ class DetailViewController : UIViewController
     @IBOutlet weak var imageView:UIImageView!;
     @IBOutlet weak var scrollView: UIScrollView!
     public var meowImage:UIImage?
-    public var title:UILabel?
+
     
     override func viewDidLoad() {
         scrollView.contentSize = (meowImage?.size)!
