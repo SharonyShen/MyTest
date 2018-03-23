@@ -12,9 +12,9 @@
 		9EF88FB02062F9A00009278D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EF88FAE2062F9A00009278D /* Main.storyboard */; };
 		9EF88FB22062F9A00009278D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EF88FB12062F9A00009278D /* Assets.xcassets */; };
 		9EF88FB52062F9A00009278D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EF88FB32062F9A00009278D /* LaunchScreen.storyboard */; };
-		9EF88FBD2062FCB40009278D /* MeowFestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF88FBC2062FCB40009278D /* MeowFestTableViewController.swift */; };
 		9EF88FBF2062FD180009278D /* MeowFestTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF88FBE2062FD180009278D /* MeowFestTableCell.swift */; };
 		9EF88FC320645C7D0009278D /* cat.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EF88FC220645C7D0009278D /* cat.png */; };
+		9EF88FC5206485180009278D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF88FC4206485180009278D /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,9 +25,9 @@
 		9EF88FB12062F9A00009278D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9EF88FB42062F9A00009278D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9EF88FB62062F9A00009278D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9EF88FBC2062FCB40009278D /* MeowFestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeowFestTableViewController.swift; sourceTree = "<group>"; };
 		9EF88FBE2062FD180009278D /* MeowFestTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeowFestTableCell.swift; sourceTree = "<group>"; };
 		9EF88FC220645C7D0009278D /* cat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cat.png; sourceTree = "<group>"; };
+		9EF88FC4206485180009278D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,10 +64,10 @@
 				9EF88FAA2062F9A00009278D /* AppDelegate.swift */,
 				9EF88FAC2062F9A00009278D /* ViewController.swift */,
 				9EF88FAE2062F9A00009278D /* Main.storyboard */,
+				9EF88FC4206485180009278D /* DetailViewController.swift */,
 				9EF88FB12062F9A00009278D /* Assets.xcassets */,
 				9EF88FB32062F9A00009278D /* LaunchScreen.storyboard */,
 				9EF88FB62062F9A00009278D /* Info.plist */,
-				9EF88FBC2062FCB40009278D /* MeowFestTableViewController.swift */,
 				9EF88FBE2062FD180009278D /* MeowFestTableCell.swift */,
 			);
 			path = MeowFest;
@@ -148,8 +148,8 @@
 			files = (
 				9EF88FBF2062FD180009278D /* MeowFestTableCell.swift in Sources */,
 				9EF88FAD2062F9A00009278D /* ViewController.swift in Sources */,
-				9EF88FBD2062FCB40009278D /* MeowFestTableViewController.swift in Sources */,
 				9EF88FAB2062F9A00009278D /* AppDelegate.swift in Sources */,
+				9EF88FC5206485180009278D /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

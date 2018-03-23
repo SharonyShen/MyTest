@@ -30,6 +30,18 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         return cell
 
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //let detailViewController = DetailViewController();
+        let detailViewController = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        let cell:MeowFestTableCell = tableView.cellForRow(at: indexPath) as! MeowFestTableCell
+        let theImage = cell.meowImageView?.image
+        detailViewController.meowImage = theImage
+        
+        self.navigationController?.pushViewController(detailViewController, animated:true)
+        
+    }
+
     func UTCToLocal(date:String, fromFormat: String, toFormat: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = fromFormat
