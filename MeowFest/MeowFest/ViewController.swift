@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
         let textCellIdentifier = "MeowFestTableCell";
     @IBOutlet weak var tableView:UITableView!
+
     var cats:[[String:String]] = []
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -20,12 +21,32 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: textCellIdentifier, for: indexPath) as! MeowFestTableCell
         let dictionary = cats[indexPath.row]
-        let times:String = dictionary["timestamp"]!
-        cell.timeLabel.text = UTCToLocal(date: times, fromFormat: "yyyy-MM-dd'T'HH:mm:ssZ", toFormat: "mm/dd/yy")
-        //cell.timeLabel.text = times
-        cell.titleLabel.text = dictionary["title"]
-        cell.descriptionLabel.text = dictionary["description"]
-        cell.meowImageView?.imageFromServerURL(urlString:dictionary["image_url"]!)
+        if let times:String = dictionary["timestamp"] {
+            cell.timeLabel.text = UTCToLocal(date: times, fromFormat: "yyyy-MM-dd'T'HH:mm:ssZ", toFormat: "mm/dd/yy")
+        }
+        else{
+            cell.timeLabel.text = ""
+        }
+        if let title_string = dictionary["title"]{
+            cell.titleLabel.text = title_string
+        }
+        else
+        {
+            cell.timeLabel.text = ""
+        }
+        
+        if let description_text = dictionary["description"]{
+         cell.descriptionLabel.text = description_text
+        }
+        else{
+            cell.timeLabel.text = ""
+        }
+        if let url = dictionary["image_url"]{
+            cell.meowImageView?.imageFromServerURL(urlString:url)
+        }
+        else{
+            cell.meowImageView.image = nil
+        }
         
         return cell
 
@@ -47,16 +68,30 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         dateFormatter.dateFormat = fromFormat
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         
-        let dt = dateFormatter.date(from: date)
-        dateFormatter.timeZone = TimeZone.current
-        dateFormatter.dateFormat = toFormat
-        
-        return dateFormatter.string(from: dt!)
+        if let dt = dateFormatter.date(from: date){
+            dateFormatter.timeZone = TimeZone.current
+            dateFormatter.dateFormat = toFormat
+            return dateFormatter.string(from: dt)
+        }
+        else{
+            return date}
     }
-
+    
+    let refreshControl = UIRefreshControl();
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+
+        
+        if #available(iOS 10.0, *){
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
+        
+        refreshControl.tintColor = UIColor.blue
+        refreshControl.addTarget(self, action: #selector(downloadData), for: .valueChanged)
+        
         downloadData();
     }
 
@@ -66,25 +101,31 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     }
 
     
-func downloadData()
+    @objc func downloadData()
 {
     let url = URL(string:"https://chex-triplebyte.herokuapp.com/api/cats?page=0")
-    
     let session = URLSession.shared
     let task = session.dataTask(with:url!) { (data, response, error) -> Void in
         print(">>>> \(String(describing: data))")
-        do{
-            let jsonResult = try JSONSerialization.jsonObject(with: data!, options: []) as? [[String:String]]
-            self.cats = ((jsonResult))!
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+        if error != nil {
+            print(error as Any)
+        } else {
+            
+            if let usableData = data {
+                print(usableData) //JSONSerialization
+                do{
+                        let jsonResult = try JSONSerialization.jsonObject(with: usableData, options: []) as? [[String:String]]
+                        self.cats = ((jsonResult))!
+                        DispatchQueue.main.async {
+                            self.refreshControl.endRefreshing()
+                            self.tableView.reloadData()
+                        }
+                    }
+                catch let error as NSError{
+                    print(error)
+                }
             }
-
         }
-        catch let error as NSError{
-            print(error)
-        }
-        
     }
     task.resume()
        

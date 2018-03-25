@@ -57,7 +57,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vci-4S-KDW">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vci-4S-KDW" customClass="MeowImageView" customModule="MeowFest" customModuleProvider="target">
                                                     <rect key="frame" x="34" y="41" width="307" height="150"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="150" id="S5w-di-RAv"/>
@@ -119,18 +119,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kPJ-i9-Iuy">
-                                <rect key="frame" x="10" y="40" width="355" height="627"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FcB-ke-DmM">
-                                        <rect key="frame" x="0.0" y="2" width="355" height="623"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                </subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kPJ-i9-Iuy">
+                                <rect key="frame" x="0.0" y="40" width="375" height="627"/>
                             </scrollView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AsX-9H-Z40">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AsX-9H-Z40">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Title" leftItemsSupplementBackButton="YES" id="QHC-F8-v8X">
                                         <barButtonItem key="backBarButtonItem" title="Back" id="XxG-lA-NMa"/>
@@ -140,15 +133,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="kPJ-i9-Iuy" firstAttribute="top" secondItem="Vsy-cg-n9h" secondAttribute="top" constant="40" id="SR4-3y-iOh"/>
-                            <constraint firstItem="NAs-z3-g1L" firstAttribute="trailing" secondItem="kPJ-i9-Iuy" secondAttribute="trailing" constant="10" id="XLy-ue-Bwe"/>
-                            <constraint firstItem="kPJ-i9-Iuy" firstAttribute="leading" secondItem="NAs-z3-g1L" secondAttribute="leading" constant="10" id="aYN-M9-QQF"/>
-                            <constraint firstItem="NAs-z3-g1L" firstAttribute="bottom" secondItem="kPJ-i9-Iuy" secondAttribute="bottom" id="p0u-SQ-trR"/>
+                            <constraint firstAttribute="trailing" secondItem="kPJ-i9-Iuy" secondAttribute="trailing" id="1Yi-44-vF2"/>
+                            <constraint firstItem="kPJ-i9-Iuy" firstAttribute="trailing" secondItem="AsX-9H-Z40" secondAttribute="trailing" id="9BM-5P-cQd"/>
+                            <constraint firstItem="kPJ-i9-Iuy" firstAttribute="top" secondItem="NAs-z3-g1L" secondAttribute="top" constant="20" id="9MQ-VU-UVM"/>
+                            <constraint firstItem="kPJ-i9-Iuy" firstAttribute="bottom" secondItem="NAs-z3-g1L" secondAttribute="bottom" id="Fcf-4R-ReZ"/>
+                            <constraint firstItem="AsX-9H-Z40" firstAttribute="top" secondItem="Vsy-cg-n9h" secondAttribute="top" id="Qin-hv-CfB"/>
+                            <constraint firstItem="AsX-9H-Z40" firstAttribute="leading" secondItem="Vsy-cg-n9h" secondAttribute="leading" id="Wxv-fX-sbY"/>
+                            <constraint firstItem="kPJ-i9-Iuy" firstAttribute="leading" secondItem="AsX-9H-Z40" secondAttribute="leading" id="h6A-yb-RTy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NAs-z3-g1L"/>
                     </view>
                     <connections>
-                        <outlet property="imageView" destination="FcB-ke-DmM" id="aHS-ct-H72"/>
                         <outlet property="scrollView" destination="kPJ-i9-Iuy" id="GT2-EE-Fh0"/>
                     </connections>
                 </viewController>
